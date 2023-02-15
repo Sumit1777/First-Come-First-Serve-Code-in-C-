@@ -1,0 +1,56 @@
+#include<iostream>
+using namespace std;
+#define s 80
+void star(int a)
+{
+    for(int i=0;i<a;i++)
+    cout<<"*";
+    cout<<"\n";
+}
+int main()
+{
+    int n,at[50],bt[50],ct[50],j=0,i=0,tat[50],wt[50],tt=0,ww=0;
+    cout<<"Enter the No. of Processes : ";
+    cin>>n;
+    cout<<"Enter the Arrival Time of the processes :\n";
+    for(i=0;i<n;i++)
+    {
+        cout<<"P["<<i+1<<"]= ";
+        cin>>at[i];
+    }
+    star(s);
+    cout<<"Enter the Burst Time of the processes :\n";
+    for(i=0;i<n;i++)
+    {
+        cout<<"P["<<i+1<<"]= ";
+        cin>>bt[i];
+    }
+    star(s);
+    int sum=0;
+    cout<<"Completion Time : \n";
+    for(int j=0;j<n;j++)
+    {
+        sum+=bt[j];
+        ct[j]+=sum;
+        cout<<"P["<<j+1<<"]= "<<ct[j];
+        cout<<"\n";
+    }
+    for(i=0;i<n;i++)
+    {
+        tat[i]=ct[i]-at[i];
+        tt+=tat[i];
+        
+    }
+    tt/=i;
+    cout<<"\nAV TAT ="<<tt;
+     for(i=0;i<n;i++)
+    {
+        wt[i]=tat[i]-bt[i];
+        ww+=wt[i];
+        
+    }
+    ww/=i;
+     cout<<"\nAV wt ="<<ww;
+    
+    return 0;
+}
